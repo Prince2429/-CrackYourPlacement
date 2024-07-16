@@ -1,0 +1,69 @@
+//Day1 
+
+#1 Find duplicate numbers
+
+Solution:
+
+int findDuplicate(vector<int>& nums) {
+        map<int,int> mp;
+
+        for(int i=0;i<nums.size();i++)
+        mp[nums[i]]++;
+
+        for(auto it:mp){
+            if(it.second>1)
+            return it.first;
+        }
+        return -1;
+    }
+
+#2 Sort Colors
+void sortColors(vector<int>& nums) {
+        int zeroc=0;
+        int onec=0;
+        int twoc=0;
+
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==0)
+            zeroc++;
+            else if(nums[i]==1)
+            onec++;
+            else
+            twoc++;
+        }
+
+        int i=0;
+
+        while(zeroc>0){
+            nums[i++]=0;
+            zeroc--;
+        }
+
+        while(onec>0){
+            nums[i++]=1;
+            onec--;
+        }
+
+        while(twoc>0){
+            nums[i++]=2;
+            twoc--;
+        }
+return ;
+
+    }
+
+#3 Remove Duplicates from Sorted Array
+int removeDuplicates(vector<int>& nums) {
+       int i=0,j=1;
+
+       while(j<nums.size()){
+        if(nums[i]==nums[j])
+        j++;
+        else{
+            nums[i+1]=nums[j];
+            i++;
+            j++;
+        }
+       }
+       return i+1;
+    }
